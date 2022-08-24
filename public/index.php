@@ -5,17 +5,16 @@ use Router\Router;
 
 require '../vendor/autoload.php';
 
-define('BASE_VIEW_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
+define('BASE_VIEW_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views'
+. DIRECTORY_SEPARATOR);
 
 $router = new Router();
 
-$router->register('/', ['Controllers\HomeController', 'index']);
+$router->get('/', ['Controllers\HomeController', 'index']);
+$router->get('/orders', ['Controllers\OrderController', 'index']);
 
-// $router->register('/contact', function (){
-//     return 'Contact Page';
-// });
-
-
-
-
-(new App($router, $_SERVER['REQUEST_URI']))->run();
+(new App($router, [
+    'uri' => $_SERVER['REQUEST_URI'],
+    'method' => $_SERVER['REQUEST_METHOD']
+    ]
+))->run();

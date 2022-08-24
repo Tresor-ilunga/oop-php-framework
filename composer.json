@@ -15,5 +15,7 @@
             "email": "19im065@esisalama.org"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
